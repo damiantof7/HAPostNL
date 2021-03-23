@@ -1,0 +1,80 @@
+1.1.15
+- fixed changed logon procedure (glsf91)
+
+1.1.14
+- fix for parcels which are received by PostNL (but not yet scheduled for delivery) which were shown on Toon as 'Zending nog niet bij PostNL'
+
+1.1.13
+- now correctly handling 'Pending' shipments (manually entered on your mobile PostNL app/PostNL Web site and saved for future use)
+  these pending shipments are not shown on Toon but will not crash the app anymore
+
+1.1.11
+- also display custom parcel name in list screen (Thanks Bonno)
+
+1.1.10
+- show the delivery date info of a package on the second line to avoid overlap with the shipmentinfo
+
+1.1.9
+- added setting to show packages with the given name instead of the barcode (thanks Bonno)
+
+1.1.8
+- made list of packages scrollable
+- separated received and send packages
+
+1.1.7
+- made update frequency configurable
+- configurable number of months of history to show on screen
+
+1.1.6
+- improved anti-bot detection
+
+1.1.5
+- showing last succesfull inbox retrieval in the screen footer
+- only show packages from the last month to improve performance
+- significantly reduced memory footprint of the app, just only need some memory now when processing the inbox
+- inbox retrieval improved by implementing anti-bot detection by glsf91
+
+1.1.2
+- dimmableColors update
+
+1.1.1
+- integrated the separate script from glfs91 into the app.
+  no manual intervention needed anymore.
+
+1.1.0
+- removed login functionality from the app.
+  inbox data is now retrieved via the seperate script from glsf91 (great job!)
+- removed letter functionality (not supported by the new script)
+
+1.0.8
+- implemented a retry reading the inbox (in case of a timeout at the server side due to large inboxes)
+- showing login status on the tile at startup
+
+1.0.7
+- implemented the access token refresh functionality (to keep the app running after the first succesfull login)
+
+1.0.6
+- implemented workaround for the new security setup of postnl (thanks to glfs91)
+
+1.0.5
+- standardized settings file name to /mnt/data/tsc/postnl.userSettings.json
+  no new functionality
+
+1.0.4
+- saves retrieved package datat to /var/volatile/tmp/postnl_inbox.json
+  this will help to debug data related issues
+- login credentials are now saved in /mnt/data/tsc/postnl_userSettings.json
+
+1.0.3
+- packages which are just handed in for shipment at the post office are now also shown correctly at Toon
+  when you added the barcode to your PostNL account while still in the post office
+- data will be retrieved only two minutes after initialising the app
+
+1.0.2
+-Packages which are returned to sender are now also shown properly
+
+1.0.1
+- added 'brievenbuspost' dates to the main screen
+ 
+1.0.0
+- initial release

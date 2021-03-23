@@ -1,0 +1,12 @@
+{
+  "domain": "PostNL",
+  "name": "PostNL Information",
+  "documentation": "https://github.com/damiantof7/postnl",
+  "homeassistant": "0.113.0",
+  "version": "1.11.3",
+  "dependencies": [
+  ],
+  "codeowners": [
+    "@damiantof7"
+  ]
+}
