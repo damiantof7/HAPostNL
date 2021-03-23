@@ -236,11 +236,11 @@ then
 	exit 1
 fi
 
-if grep -q "?botdetected=true" $RESPFILE
-then
-	echo "Error: Request is detetcted as a bot. After a while it will work again. See $RESPFILE. Aborting."
-	exit 1
-fi
+#if grep -q "?botdetected=true" $RESPFILE
+#then
+#	echo "Error: Request is detetcted as a bot. After a while it will work again. See $RESPFILE. Aborting."
+#	exit 1
+#fi
 
 # Generate CodeVerifier, stateValue and codeChallenge
 
@@ -261,21 +261,21 @@ RESPFILE="$TMPDIR/postnl-resp4.tmp"
 removeFile $RESPFILE
 
 OUTPUTCURL=`curl $PROXY -i -o $RESPFILE -k -b $COOKIEFILE -c $COOKIEFILE -s -L -w %{url_effective} "https://jouw.postnl.nl/identity/connect/authorize?client_id=pwb-web&audience=poa-profiles-api&scope=openid%20profile%20email%20poa-profiles-api%20pwb-web-api&response_type=code&code_challenge_method=S256&code_challenge=$CODECHALLENGE&prompt=none&state=$STATEVALUE&redirect_uri=https://jouw.postnl.nl/silent-renew.html&ui_locales=nl_NL"`
-#echo "Output identity/connect/authorize: $OUTPUTCURL"
+echo "Output identity/connect/authorize: $OUTPUTCURL"
 
-if ! echo $OUTPUTCURL | grep -q "^https://jouw.postnl.nl"
-then
-	echo "Error: Wrong redirect received from connect/authorize request. See $RESPFILE. Aborting."
-	echo "       Response: $OUTPUTCURL"
-	exit 1
-fi
+#if ! echo $OUTPUTCURL | grep -q "^https://jouw.postnl.nl"
+#then
+#	echo "Error: Wrong redirect received from connect/authorize request. See $RESPFILE. Aborting."
+#	echo "       Response: $OUTPUTCURL"
+#	exit 1
+#fi
 
-if ! echo $OUTPUTCURL | grep -q "code="
-then
-	echo "Error: Wrong redirect received from connect/authorize request. See $RESPFILE. Aborting."
-	echo "       Response: $OUTPUTCURL"
-	exit 1
-fi
+#if ! echo $OUTPUTCURL | grep -q "code="
+#then
+#	echo "Error: Wrong redirect received from connect/authorize request. See $RESPFILE. Aborting."
+#	echo "       Response: $OUTPUTCURL"
+#	exit 1
+#fi
 
 CODE=`echo -n $OUTPUTCURL | sed 's/.*code=\(.*\)\&scope.*/\1/'`
 # echo "Code: $CODE"
